@@ -4,6 +4,7 @@ import { Authorized } from "./Authorized"
 import { Login } from "../pages/Login.jsx"
 import Home from "../pages/Home"
 import { Register } from '../pages/Register.jsx'
+import { SkinTypeSelector } from '../pages/skintype.jsx'
 
 
 export const ApplicationViews = () => {
@@ -22,9 +23,9 @@ export const ApplicationViews = () => {
         <Routes>
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
-            <Route path="/home" element={<Home />} />
             <Route element={<Authorized />}>
-                <Route path="/" element={<Home />} />
+                <Route path="/skintype" element={<SkinTypeSelector />} />
+                <Route path="/home" element={<Home />} />
             </Route>
         </Routes>
     </BrowserRouter>

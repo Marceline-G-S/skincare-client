@@ -3,10 +3,11 @@ import { Link, useNavigate } from "react-router-dom";
 import "./Login.css"
 
 export const Register = () => {
-    const [email, setEmail] = useState("admina@straytor.com")
-    const [password, setPassword] = useState("straytor")
-    const [firstName, setFirstName] = useState("Admina")
-    const [lastName, setLastName] = useState("Straytor")
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("88888888")
+    const [firstName, setFirstName] = useState("")
+    const [lastName, setLastName] = useState("")
+    const [username, setUsername] = useState("")
     const existDialog = useRef()
     const navigate = useNavigate()
 
@@ -15,10 +16,11 @@ export const Register = () => {
         fetch(`http://localhost:8000/register`, {
             method: "POST",
             body: JSON.stringify({
-                email,
-                password,
+                email: email,
+                password: password,
                 first_name: firstName,
-                last_name: lastName
+                last_name: lastName,
+                username: username
             }),
             headers: {
                 "Content-Type": "application/json"
@@ -27,7 +29,7 @@ export const Register = () => {
             .then(res => res.json())
             .then(authInfo => {
                 if (authInfo && authInfo.token) {
-                    localStorage.setItem("rock_token", JSON.stringify(authInfo))
+                    localStorage.setItem("auth_token", JSON.stringify(authInfo))
                     navigate("/")
                 } else {
                     existDialog.current.showModal()
@@ -44,7 +46,7 @@ export const Register = () => {
 
             <section>
                 <form className="form--login" onSubmit={handleRegister}>
-                    <h1 className="text-4xl mt-7 mb-3">Rock of Ages</h1>
+                    <h1 className="text-4xl mt-7 mb-3">Skincare project</h1>
                     <h2 className="text-xl mb-10">Register new account</h2>
                     <fieldset className="mb-4">
                         <label htmlFor="firstName"> First name </label>
@@ -52,7 +54,7 @@ export const Register = () => {
                             value={firstName}
                             onChange={evt => setFirstName(evt.target.value)}
                             className="form-control"
-                            placeholder=""
+                            placeholder="first name"
                             required autoFocus />
                     </fieldset>
                     <fieldset className="mb-4">
@@ -61,16 +63,25 @@ export const Register = () => {
                             value={lastName}
                             onChange={evt => setLastName(evt.target.value)}
                             className="form-control"
-                            placeholder=""
+                            placeholder="last name"
                             required autoFocus />
                     </fieldset>
                     <fieldset className="mb-4">
-                        <label htmlFor="inputEmail"> Email address </label>
+                        <label htmlFor="inputEmail"> Email  </label>
                         <input type="email" id="inputEmail"
                             value={email}
                             onChange={evt => setEmail(evt.target.value)}
                             className="form-control"
-                            placeholder="Email address"
+                            placeholder="Email"
+                            required autoFocus />
+                    </fieldset>
+                    <fieldset className="mb-4">
+                        <label htmlFor="inputUsername"> Username  </label>
+                        <input type="username" id="inputUsername"
+                            value={username}
+                            onChange={evt => setUsername(evt.target.value)}
+                            className="form-control"
+                            placeholder="Username"
                             required autoFocus />
                     </fieldset>
                     <fieldset className="mb-4">
