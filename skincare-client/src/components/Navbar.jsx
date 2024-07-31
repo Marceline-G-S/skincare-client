@@ -1,5 +1,7 @@
 import { NavLink, useNavigate } from "react-router-dom"
 import "./Navbar.css"
+import { useEffect } from 'react';
+
 
 export const NavBar = () => {
     const navigate = useNavigate()
@@ -16,8 +18,7 @@ export const NavBar = () => {
             </li>
             <li className="navbar__item pl-10">
                 <NavLink className="text-left underline text-blue-600 hover:text-purple-700" to={"/journal"}>Journal</NavLink>
-            </li>
-            
+            </li>            
             {
                 (localStorage.getItem("auth_token") !== null) ?
                     <li className="navbar__item">
