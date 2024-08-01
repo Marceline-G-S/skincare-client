@@ -30,7 +30,7 @@ export const Register = () => {
             .then(authInfo => {
                 if (authInfo && authInfo.token) {
                     localStorage.setItem("auth_token", JSON.stringify(authInfo))
-                    navigate("/")
+                    navigate("/home")
                 } else {
                     existDialog.current.showModal()
                 }
