@@ -5,6 +5,8 @@ import Home from "../pages/Home"
 import { Register } from '../pages/Register.jsx'
 import { SkinTypeSelector } from '../pages/skintype.jsx'
 import { SkinConcernSelector } from "../pages/concerns.jsx"
+import { JournalEntriesPage } from "../pages/journal.jsx"
+import { EditJournalEntryPage } from "../pages/EditJournalEntryPage.jsx"
 
 
 export const ApplicationViews = () => {
@@ -17,6 +19,8 @@ export const ApplicationViews = () => {
                 <Route path="/home" element={<Home />} />
                 <Route path="/skintype" element={<SkinTypeSelector />} />
                 <Route path="/concerns" element={<SkinConcernSelector />} />
+                <Route path="/journal" element={<JournalEntriesPage />}/>
+                <Route path="/edit-entry/:id" element={<EditJournalEntryPage/>} />
             </Route>
         </Routes>
     </BrowserRouter>
