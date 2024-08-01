@@ -95,32 +95,38 @@ export const SkinConcernSelector = () => {
   };
 
   return (
-    <div style={{ display: 'flex' }}>
-      <div>
-        <h2>Select Your Skin Concerns</h2>
-        {skinConcerns.map(concern => (
-          <div key={concern.id}>
-            <input
-              type="checkbox"
-              id={`concern-${concern.id}`}
-              name="concern"
-              value={concern.id}
-              checked={userConcerns.some(userConcern => userConcern.concernId === concern.id)}
-              onChange={() => handleAddConcern(concern.id)}
-            />
-            <label htmlFor={`concern-${concern.id}`}>{concern.concern}</label>
-          </div>
-        ))}
-      </div>
-      <div>
-        <h2>Your Selected Concerns</h2>
-        {userConcerns.map(userConcern => (
-          <div key={userConcern.id}>
-            <span>{userConcern.concern.concern}</span>
-            <button onClick={() => handleRemoveConcern(userConcern.concern.id)} disabled={isSubmitting}>Remove</button>
-          </div>
-        ))}
+    <div className="container mx-auto px-4 py-8">
+      <div className="flex flex-wrap -m-4">
+        <div className="w-full md:w-1/2 lg:w-1/3 p-4">
+          <h2 className="text-2xl font-semibold mb-4">Select Your Skin Concerns</h2>
+          {skinConcerns.map(concern => (
+            <div key={concern.id} className="flex items-center mb-4">
+              <input
+                type="checkbox"
+                id={`concern-${concern.id}`}
+                name="concern"
+                value={concern.id}
+                checked={userConcerns.some(userConcern => userConcern.concernId === concern.id)}
+                onChange={() => handleAddConcern(concern.id)}
+                className="mr-2"
+              />
+              <label htmlFor={`concern-${concern.id}`} className="text-gray-300">{concern.concern}</label>
+            </div>
+          ))}
+        </div>
+        <div className="w-full md:w-1/2 lg:w-1/3 p-4">
+          <h2 className="text-2xl font-semibold mb-4">Your Selected Concerns</h2>
+          {userConcerns.map(userConcern => (
+            <div key={userConcern.id} className="flex items-center mb-4">
+              <span className="text-gray-300">{userConcern.concern.concern}</span>
+              <button onClick={() => handleRemoveConcern(userConcern.concern.id)} disabled={isSubmitting} className="ml-4 bg-red-500 text-white rounded px-2 py-1 hover:bg-red-600">
+                Remove
+              </button>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
+  
 };
