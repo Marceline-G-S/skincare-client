@@ -4,6 +4,7 @@ export const SkinTypeSelector = () => {
   const [skinTypes, setSkinTypes] = useState([]);
   const [selectedSkinTypeId, setSelectedSkinTypeId] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [yourSkintype, setYourSkintype] = useState("")
 
   useEffect(() => {
     fetch('http://localhost:8000/skintypes', {
@@ -16,6 +17,18 @@ export const SkinTypeSelector = () => {
       .then(response => response.json())
       .then(data => setSkinTypes(data))
       .catch(error => console.error('Error fetching skin types:', error));
+
+      fetch('http://localhost:8000/skintypes/1', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Token ${JSON.parse(localStorage.getItem("auth_token")).token}`
+        },
+      })
+      .then(response => response.json())
+      .then(data => setYourSkintype(data.skintype))
+      .catch(error => console.error('Error fetching skin types:', error))
+
   }, []);
 
   const handleChange = (event) => {
@@ -47,8 +60,7 @@ export const SkinTypeSelector = () => {
 
   return (
     <div>
-      <h1>Hmmmm. There should be an explanation of skintypes here. Well, that's a problem for future me. Anyways : </h1>
-
+      <h1> Your currently selected skintype : {yourSkintype}</h1>
       <h2>Select Your Skin Type</h2>
       {skinTypes.map(skinType => (
         <div key={skinType.id}>
