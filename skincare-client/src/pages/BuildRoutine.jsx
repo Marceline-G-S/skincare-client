@@ -1,18 +1,38 @@
+// BuildRoutine.jsx
 export const BuildRoutine = () => {
   return (
-    <main className='text-slate-900 pl-10 pr-10'>
-        <h1 className='text-4xl'>Welcome to the skincare project!</h1>
-        <h2> The process to build a skincare routine is relatively simple.</h2>
-        <h2> With each product you add, remember to do a skin patch test. This is done by putting a small amount of the product on a safe bit of skin and waiting to ensure your skin has no allergic or negative reactions. If your skin has an immediate negative reaction, discontinue use immediately and wash off the skin.</h2>
-        <h2> With each product you add, allow about a week of use before adding a new product. This will ensure you have a good grasp on how the product affects your skin. </h2>
-        <h2> Keeping a record of how your skin looks and feels before and after each product will allow you to track progress more accurately. Most improvements are gradual, so you're unlikely to notice the difference without a side by side record.</h2>
+    <main className='max-w-4xl mx-auto px-4 py-8 md:px-10 lg:px-20 bg-gray-800 text-white'>
+      <section className='text-center my-8'>
+        <h1 className='text-5xl font-bold'>Welcome to the Skincare Project!</h1>
+        <p className='mt-2 text-xl'>Guiding you through building a personalized skincare routine.</p>
+      </section>
 
-        <h2> 1. Determine your skin type. Many products work best for specific skin types, and say as such. This knowledge will get you a good starting point.</h2>
-        <h2> 2. Most soaps are harsh on the skin, and will damage the skin barrier. Start with a good cleanser appropriate for your skin type.</h2>
-        <h2> 3. Once the cleanser is done, you can begin adding more products. Each product you add should address at least one concern, but preferably multiple.</h2>
-        <h2> 4. Once you're satisfied with how your skin feels, you're done. </h2>
+      <section className='space-y-8'>
+        <article className='bg-gray-900 p-6 rounded-lg shadow-md'>
+          <h2 className='text-3xl font-semibold'>Determine Your Skin Type</h2>
+          <p className='mt-4'>Many products work best for specific skin types. Knowing yours is a great starting point.</p>
+        </article>
 
-        <h2> As long as your skin doesn't have a negative or allergic reaction, there's no meaningful limit to how much skincare you can use, but there's no need to overdo it.</h2>
+        <article className='bg-gray-900 p-6 rounded-lg shadow-md'>
+          <h2 className='text-3xl font-semibold'>Choose a Gentle Cleanser</h2>
+          <p className='mt-4'>Most soaps are harsh and can damage the skin barrier. Opt for a cleanser suitable for your skin type.</p>
+        </article>
+
+        <article className='bg-gray-900 p-6 rounded-lg shadow-md'>
+          <h2 className='text-3xl font-semibold'>Add Targeted Products</h2>
+          <p className='mt-4'>Each product should address at least one concern, ideally several. This layered approach helps tackle various skin needs.</p>
+        </article>
+
+        <article className='bg-gray-900 p-6 rounded-lg shadow-md'>
+          <h2 className='text-3xl font-semibold'>Monitor and Adjust</h2>
+          <p className='mt-4'>Keep a record of your skin's condition before and after each addition. Gradual improvements are common, so tracking is key.</p>
+        </article>
+
+        <article className='bg-gray-900 p-6 rounded-lg shadow-md'>
+          <h2 className='text-3xl font-semibold'>Finalize Your Routine</h2>
+          <p className='mt-4'>Once satisfied, your routine is set. Remember, balance is key—there's no meaningful limit, but avoid overdoing it.</p>
+        </article>
+      </section>
     </main>
   );
 };

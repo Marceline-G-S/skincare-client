@@ -74,24 +74,31 @@ export const EditJournalEntryPage = () => {
 
 
     return (
-        <div>
-            <h1>Edit Journal Entry</h1>
-            <form onSubmit={handleSubmit}>
-                <textarea
-                    value={description}
-                    onChange={(e) => setDescription(e.target.value)}
-                    placeholder="Update your journal entry..."
-                />
-                <select onChange={(e) => setEntryConcernId(e.target.value)} value={entryConcernId}>
-                    <option value={0}>- Select a concerned -</option>
-                    {userConcerns.map(userConcern => (
-                        <option key={userConcern.concern.id} value={userConcern.concern.id}>{userConcern.concern.concern}</option>
-                    ))}
-                </select>
-                <button type="submit">Save Changes</button>
-            </form>
-            <button onClick={handleDelete} style={{marginTop: '10px'}}>Delete Entry</button>
-            <button onClick={handleCancel} style={{marginTop: '10px'}}>Cancel</button>
+        <div className="container mx-auto px-4 py-8">
+            <div className="flex flex-wrap -m-4">
+                <div className="w-full p-4">
+                    <h1 className="text-2xl font-semibold mb-4">Edit Journal Entry</h1>
+                    <form onSubmit={handleSubmit} className="mb-6">
+                        <textarea
+                            value={description}
+                            onChange={(e) => setDescription(e.target.value)}
+                            placeholder="Update your journal entry..."
+                            className="mb-4 p-2 border border-gray-300 rounded text-gray-900 w-full"
+                        />
+                        <select onChange={(e) => setEntryConcernId(e.target.value)} value={entryConcernId} className="mb-4 p-2 border border-gray-300 rounded text-gray-900 w-full">
+                            <option value={0}>- Select a concerned -</option>
+                            {userConcerns.map(userConcern => (
+                                <option key={userConcern.concern.id} value={userConcern.concern.id}>{userConcern.concern.concern}</option>
+                            ))}
+                        </select>
+                        <button type="submit" className="bg-blue-500 text-white rounded px-2 py-1 hover:bg-blue-700 w-full">Save Changes</button>
+                    </form>
+                    <div className="flex justify-end mt-4 space-x-2">
+                        <button onClick={handleDelete} className="bg-red-500 text-white rounded px-2 py-1 hover:bg-red-600">Delete Entry</button>
+                        <button onClick={handleCancel} className="bg-gray-300 text-black rounded px-2 py-1 hover:bg-gray-400">Cancel Edit</button>
+                    </div>
+                </div>
+            </div>
         </div>
     );
-};
+}    
